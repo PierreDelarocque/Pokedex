@@ -1,16 +1,28 @@
+/* eslint-disable react/prop-types */
+import PropTypes from "prop-types";
+
 function PokemonCard({ pokemon }) {
   return (
-    <figure>
-      {pokemon.imgSrc ===
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" ? (
-        <img src={pokemon.imgSrc} />
+    <>
+      {pokemon.imgSrc !== undefined ? (
+        <figure>
+          <img src={pokemon.imgSrc} alt={pokemon.name} />
+          <figcaption>{pokemon.name}</figcaption>
+        </figure>
       ) : (
-        <p>???</p>
+        <figure>
+          <p>???</p>
+          <figcaption>{pokemon.name}</figcaption>
+        </figure>
       )}
-
-      <figcaption>{pokemon.name}</figcaption>
-      {pokemon}
-    </figure>
+    </>
   );
 }
+
+PokemonCard.propTypes = {
+  pokemon: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    imgSrc: PropTypes.string,
+  }).isRequired,
+};
 export default PokemonCard;
