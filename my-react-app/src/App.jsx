@@ -1,3 +1,4 @@
+import { toUnicode } from "punycode";
 import "./App.css";
 import PokemonCard from "./components/PokemonCard";
 import { useState } from "react";
@@ -6,16 +7,12 @@ function App() {
   const [pokemonIndex, setPokemonIndex] = useState(0);
 
   const handleClickAfter = () => {
-    for (pokemonIndex < pokemonList.length -1) {
-      setPokemonIndex(pokemonIndex + 1);
-
-    }
+    setPokemonIndex(pokemonIndex + 1);
   };
+
   const handleClickBefore = () => {
-    for (pokemonIndex > 0) {
-      setPokemonIndex(pokemonIndex -1)
-    }
-  }
+    setPokemonIndex(pokemonIndex - 1);
+  };
 
   const pokemonList = [
     {
@@ -45,11 +42,18 @@ function App() {
 
   return (
     <>
-      
       <div>
-        <PokemonCard pokemon={pokemonList[0]} />
-        <button onClick={handleClickBefore}>précédent</button>
-      <button onClick={handleClickAfter}>Suivant</button>
+        <PokemonCard pokemon={pokemonList[pokemonIndex]} />
+        {pokemonIndex > 0 ? (
+          <button onClick={handleClickBefore}>précédent</button>
+        ) : (
+          <button>start</button>
+        )}
+        {pokemonIndex < pokemonList.length - 1 ? (
+          <button onClick={handleClickAfter}>Suivant</button>
+        ) : (
+          <button>End</button>
+        )}
       </div>
     </>
   );
