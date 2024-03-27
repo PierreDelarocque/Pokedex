@@ -3,20 +3,6 @@ import PokemonCard from "./components/PokemonCard";
 import { useState } from "react";
 
 function App() {
-  const [pokemonIndex, setPokemonIndex] = useState(0);
-
-  const handleClickAfter = () => {
-    for (pokemonIndex < pokemonList.length -1) {
-      setPokemonIndex(pokemonIndex + 1);
-
-    }
-  };
-  const handleClickBefore = () => {
-    for (pokemonIndex > 0) {
-      setPokemonIndex(pokemonIndex -1)
-    }
-  }
-
   const pokemonList = [
     {
       name: "bulbasur",
@@ -43,13 +29,24 @@ function App() {
     },
   ];
 
+  const [pokemonIndex, setPokemonIndex] = useState(0);
+
+  const handleClickAfter = () => {
+    if (pokemonIndex < pokemonList.length - 1) {
+      setPokemonIndex(pokemonIndex + 1);
+    }
+  };
+  const handleClickBefore = () => {
+    if (pokemonIndex > 0) {
+      setPokemonIndex(pokemonIndex - 1);
+    }
+  };
   return (
     <>
-      
       <div>
-        <PokemonCard pokemon={pokemonList[0]} />
+        <PokemonCard pokemon={pokemonList[pokemonIndex]} />
         <button onClick={handleClickBefore}>précédent</button>
-      <button onClick={handleClickAfter}>Suivant</button>
+        <button onClick={handleClickAfter}>Suivant</button>
       </div>
     </>
   );
