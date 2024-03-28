@@ -25,6 +25,11 @@ function App() {
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
     },
     {
+      name: "boustiflor",
+      imgSrc:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/70.png",
+    },
+    {
       name: "mew",
     },
   ];
