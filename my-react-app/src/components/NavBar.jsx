@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+
 
 
  
@@ -19,9 +19,10 @@ const handleClickBefore = () => {
 };
 return (
   <>
-    <div>
+    <div className="button">
       
       <button onClick={handleClickBefore}>précédent</button>
+      
       <button onClick={handleClickAfter}>Suivant</button>
     </div>
   </>
